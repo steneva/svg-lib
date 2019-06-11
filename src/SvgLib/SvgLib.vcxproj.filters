@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Core\Shapes">
+      <UniqueIdentifier>{78e2a7ee-63e3-4de7-a1e6-1bef3fdb4499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Properties">
+      <UniqueIdentifier>{5966877d-f7b3-4c42-8756-ef53059b522d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Xml">
+      <UniqueIdentifier>{3f07fdab-cd41-4ab6-ae79-a3f94ac22e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Utils">
+      <UniqueIdentifier>{1635e156-6f29-4d1c-a4aa-1e6a23455cd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Regions">
+      <UniqueIdentifier>{e3272959-684b-4698-a25f-f418e0e842f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PropertyValue.h">
+      <Filter>Core\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="Tag.h">
+      <Filter>Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="Parser.h">
+      <Filter>Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="DomElementCollection.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="DomElement.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ScalableVectorGraphic.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Core\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Core\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>Core\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleRegion.h">
+      <Filter>Core\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="FileReader.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Core\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangleRegion.h">
+      <Filter>Core\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="TagToken.h">
+      <Filter>Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="TagAttributeCollection.h">
+      <Filter>Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="Region.h">
+      <Filter>Core\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Core\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="Boxable.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Length.h">
+      <Filter>Core\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="SvgLoader.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="DomElement.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="DomElementCollection.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ScalableVectorGraphic.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>Core\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Core\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Core\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Region.cpp">
+      <Filter>Core\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleRegion.cpp">
+      <Filter>Core\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangleRegion.cpp">
+      <Filter>Core\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="TagAttributeCollection.cpp">
+      <Filter>Xml</Filter>
+    </ClCompile>
+    <ClCompile Include="Tag.cpp">
+      <Filter>Xml</Filter>
+    </ClCompile>
+    <ClCompile Include="Parser.cpp">
+      <Filter>Xml</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Core\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Boxable.cpp">
+      <Filter>Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="FileReader.cpp">
+      <Filter>Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Core\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="Length.cpp">
+      <Filter>Core\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertyValue.cpp">
+      <Filter>Core\Properties</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
