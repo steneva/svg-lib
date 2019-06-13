@@ -128,7 +128,7 @@
     <ClInclude Include="CircleRegion.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="DomElementCollection.h" />
-    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileHelper.h" />
     <ClInclude Include="Length.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RectangleRegion.h" />
@@ -151,7 +151,7 @@
     <ClCompile Include="CircleRegion.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="DomElementCollection.cpp" />
-    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="Length.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RectangleRegion.cpp" />

@@ -4,7 +4,7 @@
 #include "Parser.h"
 #include "ScalableVectorGraphic.h"
 #include "SvgLoader.h"
-#include "FileReader.h"
+#include "FileHelper.h"
 
 using namespace std;
 
@@ -41,7 +41,7 @@ int main()
 	string path;
 	cin >> path;
 
-	const string file_content = FileReader::get_file_content(path);
+	const string file_content = FileHelper::read_file_content(path);
 	xml::Tag root = xml::Parser::parse(file_content);
 
 	ScalableVectorGraphic svg = SvgLoader::load(root);

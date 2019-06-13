@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-class FileReader
+class FileHelper
 {
 public:
 	static std::string get_file_content(std::string path)

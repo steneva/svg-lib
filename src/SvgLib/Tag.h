@@ -50,17 +50,6 @@ namespace xml
 			return *this;
 		}
 
-		static std::vector<Tag*> copy_children(const std::vector<Tag*>& children)
-		{
-			std::vector<Tag*> new_children;
-			new_children.reserve(children.size());
-			for (auto child : children)
-			{
-				new_children.push_back(new Tag(*child));
-			}
-			return new_children;
-		}
-
 		bool has_children() const
 		{
 			return !_children.empty();
@@ -109,6 +98,40 @@ namespace xml
 		iterator children_end()
 		{
 			return _children.end();
+		}
+
+		void to_xml(std::ostream& out)
+		{
+			to_xml_impl(out, *this);
+		}
+
+	private:
+		void to_xml_impl(std::ostream& out, const Tag& root, int level = 0)
+		{
+			for (auto i = root.children_begin(); i != root.children_end(); ++i)
+			{
+				const xml::Tag& current_child = *i;
+				const std::string tag_na = current_child.name();
+				const std::string indent = std::string(level * 2, ' ');
+				out << indent << "<" << tag_na << " ";
+				for (auto attribute = current_child.get_attributes().begin();
+					attribute != current_child.get_attributes().end();
+					++attribute)
+				{
+					out << attribute->first << " = \"" << attribute->second << "\"" << " ";
+				}
+
+				if (current_child.has_children())
+				{
+					out << ">" << std::endl;
+					to_xml_impl(out, current_child, level + 1);
+					out << indent << "</" << tag_na << ">" << std::endl;
+				}
+				else
+				{
+					out << "/>" << std::endl;
+				}
+			}
 		}
 	};
 }

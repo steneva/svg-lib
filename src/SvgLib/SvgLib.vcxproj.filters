@@ -52,9 +52,6 @@
     <ClInclude Include="CircleRegion.h">
       <Filter>Core\Regions</Filter>
     </ClInclude>
-    <ClInclude Include="FileReader.h">
-      <Filter>Core\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Rectangle.h">
       <Filter>Core\Shapes</Filter>
     </ClInclude>
@@ -83,6 +80,9 @@
       <Filter>Core\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="FileHelper.h">
       <Filter>Core\Utils</Filter>
     </ClInclude>
   </ItemGroup>
@@ -133,9 +133,6 @@
     <ClCompile Include="Boxable.cpp">
       <Filter>Core\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="FileReader.cpp">
-      <Filter>Core\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>Core\Properties</Filter>
     </ClCompile>
@@ -144,6 +141,9 @@
     </ClCompile>
     <ClCompile Include="PropertyValue.cpp">
       <Filter>Core\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="FileHelper.cpp">
+      <Filter>Core\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
