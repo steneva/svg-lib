@@ -1,10 +1,15 @@
 ﻿#pragma once
+#include <string>
 
-#include "UnitType.h"
-
-template <typename T>
-struct AttributeValue
+struct Attribute
 {
-	T value;
-	UnitType unit;
+public:
+	std::string name;
+	std::string value;
+
+	Attribute(std::string name, std::string value)
+	{
+		this->name = name;
+		this->value = value;
+	}
 };

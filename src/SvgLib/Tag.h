@@ -1,10 +1,8 @@
 ﻿#pragma once
 
 #include <string>
-#include <map>
 #include <vector>
 #include <regex>
-#include <functional>
 #include "TagAttributeCollection.h"
 
 namespace xml
@@ -16,35 +14,41 @@ namespace xml
 		typedef std::vector<Tag>::const_iterator const_iterator;
 
 	private:
-		std::string _na;
+		std::string _name;
 		std::vector<Tag> _children;
 		TagAttributeCollection _attributes;
 
 	public:
-		Tag(const std::string& na)
+		Tag(const std::string& name)
 		{
-			this->_na = na;
+			this->_name = name;
 			this->_attributes = TagAttributeCollection();
 		}
 
-		Tag(const std::string& na, const std::map<std::string, std::string>& attributes)
+		Tag(const std::string& name, const std::vector<Attribute>& attributes)
 		{
-			this->_na = na;
+			this->_name = name;
 			this->_attributes = TagAttributeCollection(attributes);
+		}
+
+		Tag(const std::string& name, const TagAttributeCollection& attributes)
+		{
+			this->_name = name;
+			this->_attributes = attributes;
 		}
 
 		Tag(const Tag& other)
 		{
 			this->_children = other._children;
 			this->_attributes = other._attributes;
-			this->_na = other._na;
+			this->_name = other._name;
 		}
 
 		Tag& operator=(const Tag& other)
 		{
 			if (this == &other)
 				return *this;
-			this->_na = other._na;
+			this->_name = other._name;
 			this->_attributes = other._attributes;
 			this->_children = other._children;
 			return *this;
@@ -55,9 +59,9 @@ namespace xml
 			return !_children.empty();
 		}
 
-		void set_na(const std::string& na)
+		void set_name(const std::string& name)
 		{
-			this->_na = na;
+			this->_name = name;
 		}
 
 		void add_child(const Tag& child_tag)
@@ -65,9 +69,9 @@ namespace xml
 			this->_children.emplace_back(child_tag);
 		}
 
-		const std::map<std::string, std::string>& get_attributes() const
+		const std::vector<Attribute>& get_attributes() const
 		{
-			return this->_attributes.get_values();
+			return this->_attributes.all();
 		}
 
 		TagAttributeCollection& attributes()
@@ -77,7 +81,7 @@ namespace xml
 
 		std::string name() const
 		{
-			return _na;
+			return _name;
 		}
 
 		const_iterator children_begin() const
@@ -111,21 +115,24 @@ namespace xml
 			for (auto i = root.children_begin(); i != root.children_end(); ++i)
 			{
 				const xml::Tag& current_child = *i;
-				const std::string tag_na = current_child.name();
+				const std::string tag_name = current_child.name();
 				const std::string indent = std::string(level * 2, ' ');
-				out << indent << "<" << tag_na << " ";
+				out << indent << "<" << tag_name << " ";
+
 				for (auto attribute = current_child.get_attributes().begin();
-					attribute != current_child.get_attributes().end();
-					++attribute)
+				     attribute != current_child.get_attributes().end();
+				     ++attribute)
 				{
-					out << attribute->first << " = \"" << attribute->second << "\"" << " ";
+					out << attribute->name << "=\"" << attribute->value << "\"";
+					if (attribute != current_child.get_attributes().end() - 1)
+						out << " ";
 				}
 
 				if (current_child.has_children())
 				{
 					out << ">" << std::endl;
 					to_xml_impl(out, current_child, level + 1);
-					out << indent << "</" << tag_na << ">" << std::endl;
+					out << indent << "</" << tag_name << ">" << std::endl;
 				}
 				else
 				{

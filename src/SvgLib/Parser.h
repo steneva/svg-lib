@@ -4,6 +4,7 @@
 #include <stack>
 #include<regex>
 #include "TagToken.h"
+#include <functional>
 
 namespace xml
 {
@@ -23,16 +24,16 @@ namespace xml
 			}
 		}
 
-		static std::map<std::string, std::string> parse_attributes(std::string attributes_str)
+		static TagAttributeCollection parse_attributes(std::string attributes_str)
 		{
-			std::map<std::string, std::string> attributes;
+			TagAttributeCollection attributes;
 
 			const auto on_match = [&attributes](std::smatch match)
 			{
 				const std::string name = match.str(1);
 				const std::string value = match.str(2);
 
-				attributes[name] = value;
+				attributes.set(name, value);
 			};
 
 			const std::regex attribute_regex(R"(([\w\-_]+)(?:=\"([^\"]*)\")?)");
@@ -100,9 +101,9 @@ namespace xml
 				}
 				else
 				{
-					std::map<std::string, std::string> attributes_p = parse_attributes(token.attributes);
-					Tag child(token.identifier, attributes_p);
-					child.set_na(token.identifier);
+					TagAttributeCollection attributes = parse_attributes(token.attributes);
+					Tag child(token.identifier, attributes);
+					child.set_name(token.identifier);
 
 					if (token.type == detail::TagToken::Type::OPENING)
 					{

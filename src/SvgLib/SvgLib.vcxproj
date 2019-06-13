@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.h" />
     <ClInclude Include="Boxable.h" />
     <ClInclude Include="CircleRegion.h" />
     <ClInclude Include="Color.h" />
@@ -147,6 +148,7 @@
     <ClInclude Include="Tag.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.cpp" />
     <ClCompile Include="Boxable.cpp" />
     <ClCompile Include="CircleRegion.cpp" />
     <ClCompile Include="Color.cpp" />

@@ -76,14 +76,17 @@
     <ClInclude Include="Length.h">
       <Filter>Core\Properties</Filter>
     </ClInclude>
-    <ClInclude Include="SvgLoader.h">
-      <Filter>Core\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Core\Utils</Filter>
     </ClInclude>
     <ClInclude Include="FileHelper.h">
       <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.h">
+      <Filter>Xml</Filter>
+    </ClInclude>
+    <ClInclude Include="SvgLoader.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +147,9 @@
     </ClCompile>
     <ClCompile Include="FileHelper.cpp">
       <Filter>Core\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.cpp">
+      <Filter>Xml</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

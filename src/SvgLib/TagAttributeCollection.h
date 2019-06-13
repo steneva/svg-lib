@@ -1,32 +1,34 @@
 ﻿#pragma once
 #include <string>
-#include <map>
+#include "Attribute.h"
+#include <vector>
+#include <stdexcept>
 
-namespace xml {
-
+namespace xml
+{
 	class TagAttributeCollection
 	{
 	private:
-		std::map<std::string, std::string> values;
+		std::vector<Attribute> attributes;
 	public:
 
 		TagAttributeCollection() = default;
 
-		TagAttributeCollection(std::map<std::string, std::string> attributes)
+		TagAttributeCollection(std::vector<Attribute> attributes)
 		{
-			this->values = attributes;
+			this->attributes = attributes;
 		}
 
 		TagAttributeCollection(const TagAttributeCollection& other)
 		{
-			this->values = other.values;
+			this->attributes = other.attributes;
 		}
 
 		TagAttributeCollection& operator =(const TagAttributeCollection& other)
 		{
 			if (&other != this)
 			{
-				this->values = other.values;
+				this->attributes = other.attributes;
 			}
 
 			return *this;
@@ -34,33 +36,60 @@ namespace xml {
 
 		void set(std::string name, std::string value = "")
 		{
-			this->values[name] = value;
+			for (Attribute& current : attributes)
+			{
+				if (current.name == name)
+				{
+					current.value = value;
+					return;
+				}
+			}
+
+			const Attribute attribute(name, value);
+			this->attributes.push_back(attribute);
 		}
 
 		std::string get(std::string name)
 		{
-			return values[name];
+			for (const Attribute& current : attributes)
+			{
+				if (current.name == name)
+				{
+					return current.value;
+				}
+			}
+
+			return "";
 		}
 
-		const std::map<std::string, std::string>& get_values() const
+		const std::vector<Attribute>& all() const
 		{
-			return this->values;
+			return this->attributes;
 		}
 
-		void remove_attribute(std::string name)
+		void remove(std::string name)
 		{
-			values.erase(name);
+			std::vector<Attribute>::iterator attribute_to_remove;
+			for (auto current = attributes.begin(); current != attributes.end(); ++current)
+			{
+				Attribute attribute = (*current);
+				if (attribute.name == name)
+				{
+					attribute_to_remove = current;
+				}
+			}
+
+			this->attributes.erase(attribute_to_remove);
 		}
 
-		std::map<std::string, std::string>::const_iterator begin() const
+		std::vector<Attribute>::const_iterator begin() const
 		{
-			return values.begin();
+			return attributes.begin();
 		}
 
-		std::map<std::string, std::string>::const_iterator end() const
+		std::vector<Attribute>::const_iterator end() const
 		{
-			return values.end();
+			return attributes.end();
 		}
 	};
-
 }
