@@ -3,6 +3,7 @@
 #include "Length.h"
 #include "Color.h"
 #include <iomanip>
+#include "Point.h"
 
 class Circle : public Shape
 {
@@ -53,6 +54,17 @@ public:
 		return get<Length>("cx");
 	}
 
+	void center(Point value)
+	{
+		this->center_x(value.x);
+		this->center_y(value.y);
+	}
+
+	Point center() const
+	{
+		return Point(center_x(), center_y());
+	}
+
 	DomElement* clone() const override
 	{
 		return new Circle(*this);
@@ -66,7 +78,10 @@ public:
 
 	void translate(Length x, Length y) override
 	{
-		// TODO: ilent
+		Point current_center = center();
+		current_center.x += x;
+		current_center.y += y;
+		center(current_center);
 	}
 
 	Length leftmost() const override
