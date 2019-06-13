@@ -21,7 +21,7 @@ public:
 		// TODO: ilent
 	}
 
-	void translate(Length x_delta, Length y_delta) override
+	void translate(Length x, Length y) override
 	{
 		// TODO: ilent
 	}

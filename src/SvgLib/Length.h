@@ -118,6 +118,16 @@ public:
 		return result;
 	}
 
+	Length& operator +=(const Length& other)
+	{
+		return *this = *this + other;
+	}
+
+	Length& operator -=(const Length& other)
+	{
+		return *this = *this - other;
+	}
+
 	Length operator -(Length other) const
 	{
 		const double diff_pixels = this->to_pixels() - other.to_pixels();
