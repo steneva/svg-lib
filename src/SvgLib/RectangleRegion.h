@@ -15,7 +15,7 @@ public:
 		this->height = height;
 	}
 
-	bool contains(const Shape& shape) override
+	bool contains(const Shape& shape) const override
 	{
 		const bool contains_x =
 			this->leftmost() <= shape.leftmost()

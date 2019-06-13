@@ -19,7 +19,7 @@ private:
 
 public:
 
-	bool contains(const Shape& shape) override
+	bool contains(const Shape& shape) const override
 	{
 		if (const auto rectangle = dynamic_cast<const Rectangle*>(&shape))
 		{

@@ -2,6 +2,7 @@
 
 #include "DomElement.h"
 #include "Shape.h"
+#include "Region.h"
 
 class ScalableVectorGraphic : public DomElement
 {
@@ -10,7 +11,7 @@ private:
 	void delete_shape_by_id(int id)
 	{
 		DomElement* parent;
-		Shape* item= find_by_id<Shape>(id, parent);
+		Shape* item = find_by_id<Shape>(id, parent);
 		parent->children().remove(item);
 	}
 
@@ -31,13 +32,29 @@ private:
 		return found_element;
 	}
 
+	std::vector<Shape*> get_shapes_within(const Region* region)
+	{
+		std::vector<Shape*> shapes;
+		const auto within_region = [&shapes, &region](Shape* shape, DomElement* parent)
+		{
+			if (region->contains(*shape))
+			{
+				shapes.push_back(shape);
+			}
+		};
+
+		traverse_tree<Shape>(within_region);
+
+		return shapes;
+	}
+
 public:
 	ScalableVectorGraphic(xml::Tag& tag)
 		: DomElement(tag)
 	{
 	}
 
-	void print(std::ostream &ostream)
+	void print(std::ostream& ostream)
 	{
 		const auto print_action = [&ostream](const Shape* shape)
 		{
@@ -67,7 +84,12 @@ public:
 		traverse_tree<Shape>(translate);
 	}
 
-	bool within()
+	void within(const Region* region, std::ostream& out)
 	{
+		std::vector<Shape*> shapes = this->get_shapes_within(region);
+		for(Shape* shape : shapes)
+		{
+			out << shape << std::endl;
+		}
 	}
 };
