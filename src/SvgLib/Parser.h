@@ -47,10 +47,10 @@ namespace xml
 			std::vector<detail::TagToken> tags;
 			const std::regex tag_regex(R"((?:<(\w+)(.*?)(\/)?>)|(?:<\/(\w+)>))");
 
-			auto tag_begin = std::sregex_iterator(x.begin(), x.end(), tag_regex);
-			auto tag_end = std::sregex_iterator();
+			auto tags_begin = std::sregex_iterator(x.begin(), x.end(), tag_regex);
+			auto tags_end = std::sregex_iterator();
 
-			for (std::sregex_iterator i = tag_begin; i != tag_end; ++i)
+			for (std::sregex_iterator i = tags_begin; i != tags_end; ++i)
 			{
 				detail::TagToken::Type type = detail::TagToken::Type::OPENING;
 				std::string identifier = i->str(1);
@@ -118,7 +118,7 @@ namespace xml
 
 			if (tree_stack.size() != 1)
 			{
-				throw std::runtime_error("Invalid x.");
+				throw std::runtime_error("Invalid xml.");
 			}
 
 			Tag& root = tree_stack.top();

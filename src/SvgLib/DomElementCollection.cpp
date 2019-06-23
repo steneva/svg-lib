@@ -34,9 +34,12 @@ DomElementCollection& DomElementCollection::operator=(const DomElementCollection
 	return *this;
 }
 
-void DomElementCollection::add(const DomElement& item)
+DomElement* DomElementCollection::add(const DomElement& item)
 {
-	this->items.push_back(item.clone());
+	DomElement* cloned = item.clone();
+	this->items.push_back(cloned);
+
+	return cloned;
 }
 
 void DomElementCollection::remove(const DomElement* item)

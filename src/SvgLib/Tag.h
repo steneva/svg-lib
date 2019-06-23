@@ -64,9 +64,9 @@ namespace xml
 			this->_name = name;
 		}
 
-		void add_child(const Tag& child_tag)
+		void add_child(const Tag &child_tag)
 		{
-			this->_children.emplace_back(child_tag);
+			 this->_children.emplace_back(child_tag);
 		}
 
 		const std::vector<Attribute>& get_attributes() const
@@ -104,27 +104,29 @@ namespace xml
 			return _children.end();
 		}
 
-		void to_xml(std::ostream& out)
+		void to_xml(std::ostream& out) const
 		{
 			to_xml_impl(out, *this);
 		}
 
 	private:
-		void to_xml_impl(std::ostream& out, const Tag& root, int level = 0)
+		static void to_xml_impl(std::ostream& out, const Tag& root, int level = 0)
 		{
 			for (auto i = root.children_begin(); i != root.children_end(); ++i)
 			{
 				const xml::Tag& current_child = *i;
 				const std::string tag_name = current_child.name();
-				const std::string indent = std::string(level * 2, ' ');
+				const std::string indent = std::string(level * 4, ' ');
 				out << indent << "<" << tag_name << " ";
 
-				for (auto attribute = current_child.get_attributes().begin();
-				     attribute != current_child.get_attributes().end();
+				const std::vector<Attribute> &attributes = current_child.get_attributes();
+
+				for (auto attribute = attributes.begin();
+				     attribute != attributes.end();
 				     ++attribute)
 				{
 					out << attribute->name << "=\"" << attribute->value << "\"";
-					if (attribute != current_child.get_attributes().end() - 1)
+					if (attribute != attributes.end() - 1)
 						out << " ";
 				}
 

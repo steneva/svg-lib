@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "FileOpenException.h"
 
 class FileHelper
 {
@@ -11,14 +12,15 @@ class FileHelper
 		T stream = T(path);
 		if (stream.fail())
 		{
-			throw std::runtime_error("Could not open file.");
+			throw FileOpenException(path);
 		}
+
 		return stream;
 	}
 
 public:
 
-	static std::string read_file_content(std::string path)
+	static std::string read_file_content(const std::string &path)
 	{
 		auto file = open_file<std::ifstream>(path);
 		std::stringstream sstream;
@@ -37,5 +39,16 @@ public:
 		auto file = open_file<std::ofstream>(path);
 
 		file << path << std::endl;
+	}
+
+	static void save(const std::string &path, const std::string &content)
+	{
+		std::ofstream file(path, std::ofstream::out | std::ofstream::trunc);
+		if(file.fail())
+		{
+			throw std::runtime_error("Could not save file.");
+		}
+
+		file << content;
 	}
 };

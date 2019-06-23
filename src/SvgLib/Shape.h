@@ -2,21 +2,28 @@
 
 #include "Tag.h"
 #include "DomElement.h"
-#include "Length.h"
-#include "Boxable.h"
+#include "Boundary.h"
 
-class Shape : public DomElement, public Boxable
+class Region;
+
+class Shape : public DomElement
 {
 private:
 	int _id;
 
 public:
 
-	Shape(xml::Tag& tag)
+	Shape(xml::Tag* tag)
 		: DomElement(tag)
 	{
 		static int s_id = 1;
 		this->_id = s_id++;
+	}
+
+	Shape(const Shape& other)
+		: DomElement(other)
+	{
+		this->_id = other._id;
 	}
 
 	int id() const
@@ -24,7 +31,9 @@ public:
 		return this->_id;
 	}
 
-	virtual void translate(Length x_delta, Length y_delta) = 0;
+	virtual Boundary boundary() const = 0;
+
+	virtual void translate(const Vector& offset) = 0;
 
 	virtual void print(std::ostream& ostream) const = 0;
 };

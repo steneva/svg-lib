@@ -30,19 +30,19 @@ private:
 
 		if (tag_name == "rect")
 		{
-			element = new Rectangle(tag);
+			element = new Rectangle(&tag);
 		}
 		else if (tag_name == "circle")
 		{
-			element = new Circle(tag);
+			element = new Circle(&tag);
 		}
 		else if (tag_name == "line")
 		{
-			element = new Line(tag);
+			element = new Line(&tag);
 		}
 		else
 		{
-			element = new DomElement(tag);
+			element = new DomElement(&tag);
 		}
 
 		for (xml::Tag::iterator child_tag = tag.children_begin(); child_tag != tag.children_end(); ++child_tag)
@@ -62,9 +62,10 @@ public:
 		if (svg_tag == nullptr)
 			throw std::runtime_error("Could not find a valid svg tag.");
 
-		ScalableVectorGraphic svg(*svg_tag);
+		ScalableVectorGraphic svg(svg_tag);
 
-		for (xml::Tag::iterator child = svg_tag->children_begin(); child != svg_tag->children_end(); ++child) {
+		for (xml::Tag::iterator child = svg_tag->children_begin(); child != svg_tag->children_end(); ++child)
+		{
 			visit_tag(*child, svg);
 		}
 

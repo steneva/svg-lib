@@ -11,12 +11,12 @@ class DomElement
 private:
 
 	DomElementCollection _children;
-	xml::Tag* _x_tag = nullptr;
+	xml::Tag* _tag;
 protected:
 
 	xml::Tag* tag() const
 	{
-		return this->_x_tag;
+		return this->_tag;
 	}
 
 	template <typename T>
@@ -26,7 +26,7 @@ protected:
 
 		std::string attribute_value = tag()->attributes().get(name);
 		T property_value;
-		if (attribute_value != "")
+		if (!attribute_value.empty())
 		{
 			property_value.parse(attribute_value);
 		}
@@ -34,7 +34,7 @@ protected:
 	}
 
 	template <typename T>
-	void set(std::string name, const T& value)
+	void set(std::string name, const T value)
 	{
 		tag()->attributes().set(name, value.to_string());
 	}
@@ -68,10 +68,54 @@ protected:
 			});
 	}
 
-public:
-	DomElement(xml::Tag& tag)
+	bool has_children() const
 	{
-		this->_x_tag = &tag;
+		return !_children.empty();
+	}
+
+	static void to_xml_impl(std::ostream& out, DomElement* root, int level = 0)
+	{
+		const xml::Tag* tag = root->tag();
+		const std::string tag_name = tag->name();
+		const std::string indent = std::string(level * 4, ' ');
+		out << indent << "<" << tag_name << " ";
+
+		const std::vector<Attribute>& attributes = tag->get_attributes();
+
+		for (auto attribute = attributes.begin();
+			attribute != attributes.end();
+			++attribute)
+		{
+			out << attribute->name << "=\"" << attribute->value << "\"";
+			if (attribute != attributes.end() - 1)
+				out << " ";
+		}
+
+		if (root->has_children())
+		{
+			out << ">" << std::endl;
+			for (DomElement* child : root->children())
+			{
+				to_xml_impl(out, child, level + 1);
+			}
+			out << indent << "</" << tag_name << ">" << std::endl;
+		}
+		else
+		{
+			out << "/>" << std::endl;
+		}
+	}
+
+public:
+	DomElement(xml::Tag* tag)
+		: _tag(tag)
+	{
+	}
+
+	DomElement(const DomElement& other)
+		: _tag(other._tag)
+	{
+		this->_children = other._children;
 	}
 
 	virtual ~DomElement() = default;
@@ -84,5 +128,12 @@ public:
 	DomElementCollection& children()
 	{
 		return this->_children;
+	}
+
+	std:: string to_xml()
+	{
+		std::stringstream content;
+		to_xml_impl(content, this);
+		return content.str();
 	}
 };

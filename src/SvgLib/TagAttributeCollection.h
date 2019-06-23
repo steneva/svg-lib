@@ -36,6 +36,7 @@ namespace xml
 
 		void set(std::string name, std::string value = "")
 		{
+
 			for (Attribute& current : attributes)
 			{
 				if (current.name == name)
@@ -48,7 +49,7 @@ namespace xml
 			const Attribute attribute(name, value);
 			this->attributes.push_back(attribute);
 		}
-
+		
 		std::string get(std::string name)
 		{
 			for (const Attribute& current : attributes)

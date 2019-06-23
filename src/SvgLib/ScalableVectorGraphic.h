@@ -3,15 +3,23 @@
 #include "DomElement.h"
 #include "Shape.h"
 #include "Region.h"
+#include "Rectangle.h"
+#include "Circle.h"
+
+class Line;
 
 class ScalableVectorGraphic : public DomElement
 {
 private:
-
 	void delete_shape_by_id(int id)
 	{
 		DomElement* parent;
 		Shape* item = find_by_id<Shape>(id, parent);
+		if (item == nullptr)
+		{
+			throw std::runtime_error("Could not find shape with id \"" + std::to_string(id) + "\".");
+		}
+
 		parent->children().remove(item);
 	}
 
@@ -32,25 +40,21 @@ private:
 		return found_element;
 	}
 
-	std::vector<Shape*> get_shapes_within(const Region* region)
+	template <typename T>
+	T* find_by_id(int id)
 	{
-		std::vector<Shape*> shapes;
-		const auto within_region = [&shapes, &region](Shape* shape, DomElement* parent)
-		{
-			if (region->contains(*shape))
-			{
-				shapes.push_back(shape);
-			}
-		};
-
-		traverse_tree<Shape>(within_region);
-
-		return shapes;
+		DomElement* parent = this;
+		return find_by_id<T>(id, parent);
 	}
 
 public:
-	ScalableVectorGraphic(xml::Tag& tag)
+	ScalableVectorGraphic(xml::Tag* tag)
 		: DomElement(tag)
+	{
+	}
+
+	ScalableVectorGraphic(const ScalableVectorGraphic& other)
+		: DomElement(other)
 	{
 	}
 
@@ -69,27 +73,67 @@ public:
 		delete_shape_by_id(id);
 	}
 
-	void translate(int x, int y, Shape* shape = nullptr)
+	void translate(const Vector& offset)
 	{
-		if (shape != nullptr)
+		const auto translate_action = [offset](Shape* shape)
 		{
-			shape->translate(x, y);
-		}
-
-		const auto translate = [x, y](Shape* shape)
-		{
-			shape->translate(x, y);
+			shape->translate(offset);
 		};
 
-		traverse_tree<Shape>(translate);
+		traverse_tree<Shape>(translate_action);
 	}
 
-	void within(const Region* region, std::ostream& out)
+	void translate(int id, const Vector& offset)
 	{
-		std::vector<Shape*> shapes = this->get_shapes_within(region);
-		for(Shape* shape : shapes)
+		Shape* shape = find_by_id<Shape>(id);
+		shape->translate(offset);
+	}
+
+	template <typename T>
+	T* create()
+	{
+		const type_info& type = typeid(T);
+
+		std::string tag_name;
+		if (type == typeid(Rectangle))
 		{
-			out << shape << std::endl;
+			tag_name = "rect";
 		}
+		else if (type == typeid(Circle))
+		{
+			tag_name = "circle";
+		}
+		else if (type == typeid(Line))
+		{
+			tag_name = "line";
+		}
+		else
+		{
+			throw std::runtime_error("Shape is not supported.");
+		}
+
+		xml::Tag* tag = new xml::Tag(tag_name);
+		T* shape = new T(tag);
+		DomElement* result = children().add(*shape);
+
+		delete shape;
+
+		return dynamic_cast<T*>(result);
+	}
+
+	std::vector<Shape*> shapes_within(const Region* region)
+	{
+		std::vector<Shape*> shapes;
+		const auto within_region = [&shapes, &region](Shape* shape, DomElement* parent)
+		{
+			if (region->contains(*shape))
+			{
+				shapes.push_back(shape);
+			}
+		};
+
+		traverse_tree<Shape>(within_region);
+
+		return shapes;
 	}
 };

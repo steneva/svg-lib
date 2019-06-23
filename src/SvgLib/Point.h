@@ -1,14 +1,18 @@
 ﻿#pragma once
-#include "Length.h"
+#include "Vector.h"
 
-struct Point
+struct Point: public Vector
 {
-	Length x;
-	Length y;
+public:
+	Point() = default;
 
-	Point(const Length& x, const Length& y)
+	Point(const Coordinate& x, const Coordinate& y)
+		: Vector(x, y)
 	{
-		this->x = x;
-		this->y = y;
+	}
+
+	Point operator+(const Vector& other) const
+	{
+		return Point(x + other.x, y + other.y);
 	}
 };

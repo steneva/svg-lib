@@ -1,12 +1,19 @@
 ﻿#pragma once
 #include "Shape.h"
-#include "Length.h"
+#include "Coordinate.h"
 #include "Color.h"
+#include "Point.h"
+#include "Length.h"
 
 class Rectangle : public Shape
 {
 public:
-	Rectangle(xml::Tag& tag): Shape(tag)
+	Rectangle(xml::Tag* tag): Shape(tag)
+	{
+	}
+
+	Rectangle(const Rectangle& other)
+		: Shape(other)
 	{
 	}
 
@@ -15,24 +22,18 @@ public:
 		return new Rectangle(*this);
 	}
 
-	Length x() const
+	Point origin() const
 	{
-		return this->get<Length>("x");
+		Coordinate x = this->get<Coordinate>("x");
+		Coordinate y = this->get<Coordinate>("y");
+
+		return Point(x, y);
 	}
 
-	void x(Length value)
+	void origin(Point value)
 	{
-		this->set("x", value);
-	}
-
-	Length y() const
-	{
-		return this->get<Length>("y");
-	}
-
-	void y(Length value)
-	{
-		this->set("y", value);
+		this->set<Coordinate>("x", value.x);
+		this->set<Coordinate>("y", value.y);
 	}
 
 	Length width() const
@@ -62,40 +63,42 @@ public:
 
 	void fill(Color value)
 	{
-		return this->set<Color>("color", value);
+		return this->set<Color>("fill", value);
 	}
 
 	void print(std::ostream& ostream) const override
 	{
-		ostream << id() << " " << tag()->name() << " " <<
-			x() << " " << y() << " " <<
+		ostream << id() << " " << tag()->name() << " " << origin() << " " <<
 			width() << " " << height() << " " <<
 			fill() << std::endl;
 	}
 
-	void translate(Length x_delta, Length y_delta) override
+	Boundary boundary() const override
 	{
-		x(x() + x_delta);
-		y(y() + y_delta);
+		const Point origin = this->origin();
+
+		const Coordinate leftmost = std::min(origin.x, origin.x + width());
+		const Coordinate rightmost = std::max(origin.x, origin.x + width());
+		const Coordinate topmost = std::min(origin.y, origin.y + height());
+		const Coordinate downmost = std::max(origin.y, origin.y + height());
+
+		const Point top_left_corner(leftmost, topmost);
+		const Point top_right_corner(rightmost, topmost);
+		const Point bottom_left_corner(leftmost, downmost);
+		const Point bottom_right_corner(rightmost, downmost);
+
+		const std::vector<Point> boundaries = {
+			top_left_corner,
+			top_right_corner,
+			bottom_left_corner,
+			bottom_right_corner
+		};
+
+		return Boundary(boundaries);
 	}
 
-	Length leftmost() const override
+	void translate(const Vector& offset) override
 	{
-		return std::min(x(), x() + width());
-	}
-
-	Length rightmost() const override
-	{
-		return std::max(x(), x() + width());
-	}
-
-	Length topmost() const override
-	{
-		return std::min(x(), x() + height());
-	}
-
-	Length downmost() const override
-	{
-		return std::max(x(), x() + height());
+		origin(origin() + offset);
 	}
 };

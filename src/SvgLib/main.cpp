@@ -5,6 +5,7 @@
 #include "ScalableVectorGraphic.h"
 #include "SvgLoader.h"
 #include "FileHelper.h"
+#include "Engine.h"
 
 using namespace std;
 
@@ -38,7 +39,7 @@ void print_tags(const xml::Tag& root, int level = 0)
 
 int main()
 {
-	string path;
+	/*string path;
 	cin >> path;
 
 	const string file_content = FileHelper::read_file_content(path);
@@ -46,7 +47,10 @@ int main()
 
 	ScalableVectorGraphic svg = SvgLoader::load(root);
 	svg.erase(1);
-	svg.print(cout);
+	svg.print(cout);*/
+
+	Engine engine(std::cin, std::cout);
+	engine.run();
 
 	return 0;
 }

@@ -1,20 +1,32 @@
 ﻿#pragma once
-#include "Length.h"
+#include "Coordinate.h"
 #include "Shape.h"
 
 class Region
 {
 protected:
-	Length x;
-	Length y;
+	Coordinate x;
+	Coordinate y;
+
 public:
-	Region(Length x, Length y)
+	Region(Coordinate x, Coordinate y)
 	{
 		this->x = x;
 		this->y = y;
 	}
 
-	virtual bool contains(const Shape& shape) const = 0;
+	bool contains(const Shape& shape) const
+	{
+		for (const Point& point : shape.boundary())
+		{
+			if (!this->contains(point))
+				return false;
+		}
+
+		return true;
+	}
+
+	virtual bool contains(const Point& point) const = 0;
 
 	virtual ~Region() = default;
 };

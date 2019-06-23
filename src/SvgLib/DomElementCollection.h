@@ -23,7 +23,7 @@ public:
 
 	DomElementCollection& operator=(const DomElementCollection& other);
 
-	void add(const DomElement& item);
+	DomElement* add(const DomElement& item);
 
 	void remove(const DomElement* item);
 
@@ -34,4 +34,9 @@ public:
 	const_iterator begin() const;
 
 	const_iterator end() const;
+
+	bool empty() const
+	{
+		return items.empty();
+	}
 };

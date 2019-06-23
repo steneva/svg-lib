@@ -125,12 +125,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.h" />
-    <ClInclude Include="Boxable.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Boundary.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CloseCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CommandParamsException.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Engine.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\ExitCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\FileOpenException.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Length.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PropertyParseException.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.h" />
+    <ClInclude Include="CommandContext.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.h" />
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.h" />
     <ClInclude Include="CircleRegion.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="DomElementCollection.h" />
     <ClInclude Include="FileHelper.h" />
-    <ClInclude Include="Length.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RectangleRegion.h" />
     <ClInclude Include="Region.h" />
@@ -149,12 +167,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.cpp" />
-    <ClCompile Include="Boxable.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Boundary.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CloseCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CommandParamsException.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Engine.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\ExitCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\FileOpenException.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Length.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PropertyParseException.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.cpp" />
+    <ClCompile Include="CommandContext.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.cpp" />
     <ClCompile Include="CircleRegion.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="DomElementCollection.cpp" />
     <ClCompile Include="FileHelper.cpp" />
-    <ClCompile Include="Length.cpp" />
+    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RectangleRegion.cpp" />
     <ClCompile Include="Region.cpp" />

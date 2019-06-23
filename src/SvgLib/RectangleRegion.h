@@ -1,50 +1,29 @@
 ﻿#pragma once
 #include "Region.h"
+#include "Coordinate.h"
 #include "Length.h"
 
-struct RectangleRegion : public Region, public Boxable
+class RectangleRegion : public Region
 {
 private:
 	Length width;
 	Length height;
 public:
-	RectangleRegion(Length x, Length y, Length width, Length height)
+	RectangleRegion(Coordinate x, Coordinate y, Length width, Length height)
 		: Region(x, y)
 	{
 		this->width = width;
 		this->height = height;
 	}
 
-	bool contains(const Shape& shape) const override
+	bool contains(const Point& point) const override
 	{
-		const bool contains_x =
-			this->leftmost() <= shape.leftmost()
-			&& this->rightmost() >= shape.rightmost();
+		const Coordinate min_x = std::min(x + width, x);
+		const Coordinate min_y = std::min(y + height, y);
+		const Coordinate max_x = std::max(x + width, x);
+		const Coordinate max_y = std::max(y + height, y);
 
-		const bool contains_y =
-			this->topmost() <= shape.topmost()
-			&& this->downmost() >= shape.downmost();
-
-		return contains_x && contains_y;
-	}
-
-	Length leftmost() const override
-	{
-		return std::min(x, x + width);
-	}
-
-	Length rightmost() const override
-	{
-		return std::max(x, x + width);
-	}
-
-	Length topmost() const override
-	{
-		return std::min(x, x + height);
-	}
-
-	Length downmost() const override
-	{
-		return std::max(x, x + height);
+		return point.x >= min_x && point.x <= max_x
+			&& point.y >= min_y && point.y <= max_y;
 	}
 };

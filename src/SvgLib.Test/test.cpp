@@ -18,11 +18,13 @@ class AttributeCollectionTest : public testing::Test
 {
 private:
 	xml::Tag* _root = nullptr;
+	ScalableVectorGraphic _svg = nullptr;
 protected:
 	void SetUp() override
 	{
 		const auto content = FileHelper::read_file_content("..\\Samples\\caution.svg");
 		this->_root = new xml::Tag(xml::Parser::parse(content));
+		this->_svg = SvgLoader::load(*_root);
 	}
 
 	void TearDown() override
@@ -61,4 +63,8 @@ TEST_F(AttributeCollectionTest, AttributeChange_Reflected)
 	const std::string attribute_current_value = tag.attributes().get(original.name);
 
 	EXPECT_EQ(attribute_new_value, attribute_current_value);
+}
+
+TEST_F(AttributeCollectionTest, CreateRectangle)
+{
 }
