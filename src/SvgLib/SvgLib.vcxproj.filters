@@ -23,6 +23,9 @@
     <Filter Include="Engine">
       <UniqueIdentifier>{74186619-43ad-42b8-9862-2011a7ddcb9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Commands">
+      <UniqueIdentifier>{39b77f7a-ea27-40d3-a5ce-1f8233e71ee4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PropertyValue.h">
@@ -85,38 +88,14 @@
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Boundary.h">
       <Filter>Core\Regions</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.h">
-      <Filter>Core\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Engine.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>Core\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.h">
       <Filter>Core\Properties</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.h">
-      <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="CommandContext.h">
       <Filter>Engine</Filter>
@@ -136,14 +115,38 @@
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CommandParamsException.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CloseCommand.h">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.h">
+      <Filter>Engine\Commands</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\ExitCommand.h">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.h">
+      <Filter>Engine\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.h">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -202,38 +205,11 @@
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Boundary.cpp">
       <Filter>Core\Regions</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.cpp">
-      <Filter>Core\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Engine.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>Core\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.cpp">
       <Filter>Core\Properties</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.cpp">
-      <Filter>Engine</Filter>
     </ClCompile>
     <ClCompile Include="CommandContext.cpp">
       <Filter>Engine</Filter>
@@ -253,14 +229,41 @@
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CommandParamsException.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CloseCommand.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\CreateCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\EraseCommand.cpp">
+      <Filter>Engine\Commands</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\ExitCommand.cpp">
-      <Filter>Engine</Filter>
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\OpenCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PrintCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\WithinCommand.cpp">
+      <Filter>Engine\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
