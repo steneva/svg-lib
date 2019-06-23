@@ -8,24 +8,9 @@ private:
 	const int PATH_INDEX = 1;
 public:
 
-	bool can_execute(const CommandContext& context) const override
-	{
-		return !context.is_file_open();
-	}
+	bool can_execute(const CommandContext& context) const override;
 
-	void execute(const CommandContext& context) const override
-	{
-		if(context.args_count() != 2)
-		{
-			throw CommandParamsException();
-		}
+	void execute(const CommandContext& context) const override;
 
-		const std::string path = context.arg(PATH_INDEX);
-		context.open_svg(path);
-	}
-
-	void onSuccess(const CommandContext& context) const override
-	{
-		context.out() << "Successfully opened file " << context.file_path() << "." << std::endl;
-	}
+	void onSuccess(const CommandContext& context) const override;
 };

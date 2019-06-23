@@ -4,15 +4,9 @@
 struct Point: public Vector
 {
 public:
-	Point() = default;
+	Point();
 
-	Point(const Coordinate& x, const Coordinate& y)
-		: Vector(x, y)
-	{
-	}
+	Point(const Coordinate& x, const Coordinate& y);
 
-	Point operator+(const Vector& other) const
-	{
-		return Point(x + other.x, y + other.y);
-	}
+	Point operator+(const Vector& other) const;
 };

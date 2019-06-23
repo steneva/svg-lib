@@ -14,28 +14,9 @@ protected:
 public:
 	virtual ~PropertyValue() = default;
 
-	virtual void parse(const std::string& value)
-	{
-		try
-		{
-			parse_impl(value);
-		}
-		catch (std::invalid_argument&)
-		{
-			throw PropertyParseException(value);
-		}
-	}
+	virtual void parse(const std::string& value);
 
-	virtual std::string to_string() const
-	{
-		std::ostringstream out;
-		to_string_impl(out);
-		return out.str();
-	}
+	virtual std::string to_string() const;
 
-	friend std::ostream& operator<<(std::ostream& out, const PropertyValue& value)
-	{
-		out << value.to_string();
-		return out;
-	}
+	friend std::ostream& operator<<(std::ostream& out, const PropertyValue& value);
 };

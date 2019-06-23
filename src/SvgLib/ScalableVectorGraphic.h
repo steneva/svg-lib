@@ -11,17 +11,7 @@ class Line;
 class ScalableVectorGraphic : public DomElement
 {
 private:
-	void delete_shape_by_id(int id)
-	{
-		DomElement* parent;
-		Shape* item = find_by_id<Shape>(id, parent);
-		if (item == nullptr)
-		{
-			throw std::runtime_error("Could not find shape with id \"" + std::to_string(id) + "\".");
-		}
-
-		parent->children().remove(item);
-	}
+	void delete_shape_by_id(int id);
 
 	template <typename T>
 	T* find_by_id(int id, DomElement*& parent)
@@ -48,46 +38,17 @@ private:
 	}
 
 public:
-	ScalableVectorGraphic(xml::Tag* tag)
-		: DomElement(tag)
-	{
-	}
+	ScalableVectorGraphic(xml::Tag* tag);
 
-	ScalableVectorGraphic(const ScalableVectorGraphic& other)
-		: DomElement(other)
-	{
-	}
+	ScalableVectorGraphic(const ScalableVectorGraphic& other);
 
-	void print(std::ostream& ostream)
-	{
-		const auto print_action = [&ostream](const Shape* shape)
-		{
-			shape->print(ostream);
-		};
+	void print(std::ostream& ostream);
 
-		this->traverse_tree<Shape>(print_action);
-	}
+	void erase(int id);
 
-	void erase(int id)
-	{
-		delete_shape_by_id(id);
-	}
+	void translate(const Vector& offset);
 
-	void translate(const Vector& offset)
-	{
-		const auto translate_action = [offset](Shape* shape)
-		{
-			shape->translate(offset);
-		};
-
-		traverse_tree<Shape>(translate_action);
-	}
-
-	void translate(int id, const Vector& offset)
-	{
-		Shape* shape = find_by_id<Shape>(id);
-		shape->translate(offset);
-	}
+	void translate(int id, const Vector& offset);
 
 	template <typename T>
 	T* create()
@@ -121,19 +82,5 @@ public:
 		return dynamic_cast<T*>(result);
 	}
 
-	std::vector<Shape*> shapes_within(const Region* region)
-	{
-		std::vector<Shape*> shapes;
-		const auto within_region = [&shapes, &region](Shape* shape, DomElement* parent)
-		{
-			if (region->contains(*shape))
-			{
-				shapes.push_back(shape);
-			}
-		};
-
-		traverse_tree<Shape>(within_region);
-
-		return shapes;
-	}
+	std::vector<Shape*> shapes_within(const Region* region);
 };

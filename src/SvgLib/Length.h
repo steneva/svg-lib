@@ -4,27 +4,13 @@
 class Length : public Coordinate
 {
 public:
-	Length(): Length(0)
-	{
-	}
+	Length();
 
-	Length(double value)
-		: Coordinate(value)
-	{
-	}
+	Length(double value);
 
-	Length(double value, UnitType unit)
-		: Coordinate(value, unit)
-	{
-	}
+	Length(double value, UnitType unit);
 
-	Length operator *(Length other) const
-	{
-		const double product_pixels = this->to_pixels() * other.to_pixels();
-		const Length result(product_pixels);
-
-		return result;
-	}
+	Length operator *(Length other) const;
 };
 
 inline Length pow(Length length, int power)

@@ -4,18 +4,9 @@
 class CloseCommand : public Command
 {
 public:
-	bool can_execute(const CommandContext& context) const override
-	{
-		return context.is_file_open();
-	}
+	bool can_execute(const CommandContext& context) const override;
 
-	void execute(const CommandContext& context) const override
-	{
-		context.close_file();
-	}
+	void execute(const CommandContext& context) const override;
 
-	void onSuccess(const CommandContext& context) const override
-	{
-		context.out() << "Successfully closed file." << std::endl;
-	}
+	void onSuccess(const CommandContext& context) const override;
 };

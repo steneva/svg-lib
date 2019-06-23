@@ -69,4 +69,9 @@ DomElementCollection::const_iterator DomElementCollection::end() const
 	return this->items.end();
 }
 
+bool DomElementCollection::empty() const
+{
+	return items.empty();
+}
+
 DomElementCollection::DomElementCollection() = default;

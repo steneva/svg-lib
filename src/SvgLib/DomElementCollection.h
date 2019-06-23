@@ -35,8 +35,5 @@ public:
 
 	const_iterator end() const;
 
-	bool empty() const
-	{
-		return items.empty();
-	}
+	bool empty() const;
 };

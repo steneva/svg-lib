@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "PropertyValue.h"
 #include <stdexcept>
-#include <sstream>
 #include <iomanip>
 
 class Length;

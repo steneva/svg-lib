@@ -6,18 +6,7 @@
 class PrintCommand : public Command
 {
 public:
-	bool can_execute(const CommandContext& context) const override
-	{
-		return context.svg() != nullptr;
-	}
+	bool can_execute(const CommandContext& context) const override;
 
-	void execute(const CommandContext& context) const override
-	{
-		if (context.args_count() != 1)
-		{
-			throw CommandParamsException();
-		}
-
-		context.svg()->print(context.out());
-	}
+	void execute(const CommandContext& context) const override;
 };

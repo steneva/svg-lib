@@ -10,18 +10,9 @@ private:
 public:
 	typedef std::vector<Point>::const_iterator const_iterator;
 
-	Boundary(const std::vector<Point>& points)
-	{
-		this->points = points;
-	}
+	Boundary(const std::vector<Point>& points);
 
-	const_iterator begin() const
-	{
-		return points.begin();
-	}
+	const_iterator begin() const;
 
-	const_iterator end() const
-	{
-		return points.end();
-	}
+	const_iterator end() const;
 };

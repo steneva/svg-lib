@@ -14,10 +14,7 @@ private:
 	xml::Tag* _tag;
 protected:
 
-	xml::Tag* tag() const
-	{
-		return this->_tag;
-	}
+	xml::Tag* tag() const;
 
 	template <typename T>
 	T get(const std::string& name) const
@@ -68,72 +65,20 @@ protected:
 			});
 	}
 
-	bool has_children() const
-	{
-		return !_children.empty();
-	}
+	bool has_children() const;
 
-	static void to_xml_impl(std::ostream& out, DomElement* root, int level = 0)
-	{
-		const xml::Tag* tag = root->tag();
-		const std::string tag_name = tag->name();
-		const std::string indent = std::string(level * 4, ' ');
-		out << indent << "<" << tag_name << " ";
-
-		const std::vector<Attribute>& attributes = tag->get_attributes();
-
-		for (auto attribute = attributes.begin();
-			attribute != attributes.end();
-			++attribute)
-		{
-			out << attribute->name << "=\"" << attribute->value << "\"";
-			if (attribute != attributes.end() - 1)
-				out << " ";
-		}
-
-		if (root->has_children())
-		{
-			out << ">" << std::endl;
-			for (DomElement* child : root->children())
-			{
-				to_xml_impl(out, child, level + 1);
-			}
-			out << indent << "</" << tag_name << ">" << std::endl;
-		}
-		else
-		{
-			out << "/>" << std::endl;
-		}
-	}
+	static void to_xml_impl(std::ostream& out, DomElement* root, int level = 0);
 
 public:
-	DomElement(xml::Tag* tag)
-		: _tag(tag)
-	{
-	}
+	DomElement(xml::Tag* tag);
 
-	DomElement(const DomElement& other)
-		: _tag(other._tag)
-	{
-		this->_children = other._children;
-	}
+	DomElement(const DomElement& other);
 
-	virtual ~DomElement() = default;
+	virtual ~DomElement();
 
-	virtual DomElement* clone() const
-	{
-		return new DomElement(*this);
-	}
+	virtual DomElement* clone() const;
 
-	DomElementCollection& children()
-	{
-		return this->_children;
-	}
+	DomElementCollection& children();
 
-	std:: string to_xml()
-	{
-		std::stringstream content;
-		to_xml_impl(content, this);
-		return content.str();
-	}
+	std::string to_xml();
 };

@@ -7,23 +7,12 @@ private:
 	std::string value;
 
 protected:
-	void parse_impl(const std::string& value) override
-	{
-		this->value = value;
-	}
+	void parse_impl(const std::string& value) override;
 
 public:
-	Color() : value("black")
-	{
-	}
+	Color();
 
-	Color(const std::string& color)
-	{
-		this->value = color;
-	}
+	Color(const std::string& color);
 
-	void to_string_impl(std::ostream& out) const override
-	{
-		out << value;
-	}
+	void to_string_impl(std::ostream& out) const override;
 };

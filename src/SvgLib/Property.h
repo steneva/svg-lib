@@ -24,18 +24,9 @@ class Property
 	}
 
 public:
-	static Coordinate coordinate(const std::string& value)
-	{
-		return create<Coordinate>(value, "coordinate");
-	}
+	static Coordinate coordinate(const std::string& value);
 
-	static Length length(const std::string& value)
-	{
-		return create<Length>(value, "length");
-	}
+	static Length length(const std::string& value);
 
-	static Color color(const std::string& value)
-	{
-		return create<Color>(value, "color");
-	}
+	static Color color(const std::string& value);
 };

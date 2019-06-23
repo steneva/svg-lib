@@ -182,6 +182,7 @@
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.cpp" />
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\PropertyParseException.cpp" />
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SaveCommand.cpp" />
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SvgLoader.cpp" />
     <ClCompile Include="CommandContext.cpp" />
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\TranslateCommand.cpp" />
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.cpp" />

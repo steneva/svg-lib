@@ -13,23 +13,11 @@ private:
 
 public:
 
-	Shape(xml::Tag* tag)
-		: DomElement(tag)
-	{
-		static int s_id = 1;
-		this->_id = s_id++;
-	}
+	Shape(xml::Tag* tag);
 
-	Shape(const Shape& other)
-		: DomElement(other)
-	{
-		this->_id = other._id;
-	}
+	Shape(const Shape& other);
 
-	int id() const
-	{
-		return this->_id;
-	}
+	int id() const;
 
 	virtual Boundary boundary() const = 0;
 

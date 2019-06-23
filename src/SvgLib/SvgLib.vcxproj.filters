@@ -82,16 +82,10 @@
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Attribute.h">
       <Filter>Xml</Filter>
     </ClInclude>
-    <ClInclude Include="SvgLoader.h">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Boundary.h">
       <Filter>Core\Regions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Engine.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.h">
       <Filter>Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Property.h">
@@ -147,6 +141,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SvgLoader.h">
+      <Filter>Core\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Command.h">
+      <Filter>Engine\Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -264,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\Vector.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\%40uni\svg-lib\src\SvgLib\SvgLoader.cpp">
+      <Filter>Core\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

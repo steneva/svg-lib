@@ -4,8 +4,5 @@
 class CommandParamsException : public std::exception
 {
 public:
-	CommandParamsException()
-		: exception("Invalid number of parameters.")
-	{
-	}
+	CommandParamsException();
 };

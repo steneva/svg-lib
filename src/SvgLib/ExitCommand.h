@@ -4,13 +4,7 @@
 class ExitCommand: public Command
 {
 public:
-	bool can_execute(const CommandContext& context) const override
-	{
-		return true;
-	}
+	bool can_execute(const CommandContext& context) const override;
 
-	void execute(const CommandContext& context) const override
-	{
-		exit(EXIT_SUCCESS);
-	}
+	void execute(const CommandContext& context) const override;
 };
