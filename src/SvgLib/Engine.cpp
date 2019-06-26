@@ -53,7 +53,16 @@ void Engine::command_loop()
 		std::vector<std::string> args = get_command_args(command_line);
 
 		const std::string command_name = args[0];
-		Command* command = _commands.find(command_name)->second;
+
+		std::map<std::basic_string<char>, Command*>::iterator command_result = _commands.find(command_name);
+
+		if (command_result == _commands.end())
+		{
+			std::cout << "Unrecognized command." << std::endl;
+			continue;
+		}
+
+		Command* command = command_result->second;
 		CommandContext context = CommandContext(args, *this);
 
 		if (command->can_execute(context))
