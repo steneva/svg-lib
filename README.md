@@ -1,4 +1,4 @@
-    Working with SVG files
+Working with SVG files
 
 ## Structure
 The application is composed of several layers:
